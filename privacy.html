@@ -7,79 +7,106 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="privacy">
-    <a href="/" class="back">← Badmumyo Studio</a>
-    <h1>Privacy Policy — Novel Browser</h1>
-    <p>Last updated: June 3, 2026</p>
+<div class="privacy">
+  <a href="/" class="back">← Badmumyo Studio</a>
 
-    <h2>1. Overview</h2>
-    <p>Novel Browser ("the App") is a web browser with AI-powered translation capabilities. This Privacy Policy explains how your data is handled when you use the App.</p>
+  <h1>Privacy Policy — Novel Browser</h1>
+  <p style="color:var(--text-dim);font-size:13px;">Last updated: June 3, 2026</p>
 
-    <h2>2. Data We Collect</h2>
-    <p><strong>We do NOT collect, store, or transmit personal data to our own servers except as described below for free tier management.</strong></p>
+  <h2>1. Overview</h2>
+  <p>Novel Browser ("the App") is a web browser with AI-powered translation capabilities. This Privacy Policy explains how your data is handled when you use the App.</p>
 
-    <h3>2.1 Device Identifier (Free Tier Management)</h3>
-    <p>When you use the free translation tier, the App collects your device's Android ID to manage your daily translation quota. This identifier is:</p>
-    <ul>
-      <li><strong>One-way hashed</strong> with SHA-256 before transmission.</li>
-      <li>Sent to our proxy service (Cloudflare Workers) in the <code>X-Device-Signature</code> header.</li>
-      <li>Stored in Cloudflare Workers KV with a 24-hour automatic expiration.</li>
-      <li>Used solely to count your daily free translations.</li>
-    </ul>
-    <p><strong>Purpose:</strong> To prevent abuse of the free translation tier without requiring user account creation.</p>
+  <h2>2. Data We Collect</h2>
+  <p><strong>We do NOT collect, store, or transmit personal data to our own servers except as described below for free tier management.</strong></p>
 
-    <h2>3. Data Sent to Third-Party AI Providers</h2>
-    <p>When you use the translation feature, the text content of the web page you are viewing is sent to the AI provider:</p>
-    <ul>
-      <li><strong>Free Tier & Subscription:</strong> Routed through our proxy (Cloudflare Workers) to a third-party AI API provider.</li>
-      <li><strong>BYOK (Bring Your Own Key):</strong> Sent directly to the AI provider you configure.</li>
-    </ul>
-    <p>You are responsible for reviewing the privacy policies of the AI providers:</p>
-    <ul>
-      <li>OpenAI: <a href="https://openai.com/policies/privacy-policy">openai.com/policies/privacy-policy</a></li>
-      <li>Anthropic: <a href="https://www.anthropic.com/legal/privacy">anthropic.com/legal/privacy</a></li>
-      <li>Google Gemini: <a href="https://policies.google.com/privacy">policies.google.com/privacy</a></li>
-    </ul>
+  <h3>2.1 Device Identifier (Free Tier Management)</h3>
+  <p>When you use the free translation tier, the App collects your device's Android ID (<code>Settings.Secure.ANDROID_ID</code>) to manage your daily translation quota. This identifier:</p>
+  <ul>
+    <li>Is <strong>one-way hashed with SHA-256</strong> before transmission — the original value is never stored or transmitted.</li>
+    <li>Is sent in the <code>X-Device-Signature</code> HTTP header to our proxy service (Cloudflare Workers).</li>
+    <li>Is stored in Cloudflare Workers KV and <strong>automatically deleted after 24 hours</strong>.</li>
+    <li>Is used <strong>solely</strong> for counting and enforcing daily free translation limits.</li>
+  </ul>
+  <p><strong>Purpose:</strong> To prevent abuse of the free translation tier (e.g., unlimited usage via reinstallation) without requiring user registration.</p>
 
-    <h2>4. Data Stored on Your Device</h2>
-    <ul>
-      <li><strong>API Keys:</strong> Encrypted with Android Keystore (AES-256-GCM).</li>
-      <li><strong>Translation Cache:</strong> Cached locally. Clearable in Settings.</li>
-      <li><strong>Glossary Terms:</strong> Stored in a local database.</li>
-      <li><strong>Browsing History & Bookmarks:</strong> Stored locally. Deletable anytime.</li>
-      <li><strong>Domain Preferences:</strong> Per-site translation settings.</li>
-      <li><strong>Subscription Status:</strong> Play Billing entitlement stored locally.</li>
-    </ul>
+  <h2>3. Data Sent to Third-Party AI Providers</h2>
+  <p>When you use the translation feature, the text content of the web page you are currently viewing is sent to AI providers. The routing depends on your plan:</p>
+  <ul>
+    <li><strong>Free Tier &amp; Subscription Plan:</strong> Text is routed through our proxy service (Cloudflare Workers) and forwarded to OpenRouter, which routes the request to the configured AI model (e.g., Google Gemini).</li>
+    <li><strong>BYOK (Bring Your Own Key) Plan:</strong> Text is sent directly to the AI provider you configure (OpenAI, Anthropic, Google Gemini, OpenRouter, or a custom endpoint).</li>
+  </ul>
+  <p>This is a core function of the translation feature and cannot be avoided when translation is active.</p>
+  <p><strong>You are responsible for reviewing the privacy policies of the AI providers you choose to use:</strong></p>
+  <ul>
+    <li>OpenAI: <a href="https://openai.com/policies/privacy-policy">https://openai.com/policies/privacy-policy</a></li>
+    <li>Anthropic: <a href="https://www.anthropic.com/legal/privacy">https://www.anthropic.com/legal/privacy</a></li>
+    <li>Google Gemini: <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></li>
+    <li>OpenRouter: <a href="https://openrouter.ai/privacy">https://openrouter.ai/privacy</a></li>
+  </ul>
 
-    <h2>5. Cookies and Site Data</h2>
-    <p>The App uses GeckoView (Mozilla). Websites you visit may set cookies. Clearable in Settings.</p>
+  <h2>4. Data Stored on Your Device</h2>
+  <p>The following data is stored locally on your device and never transmitted to us:</p>
+  <ul>
+    <li><strong>API Keys:</strong> Stored encrypted using Android Keystore (AES-256-GCM).</li>
+    <li><strong>Translation Cache:</strong> Previously translated text is cached locally to reduce API costs on repeat visits. You can clear this cache at any time in Settings.</li>
+    <li><strong>Glossary Terms:</strong> User-managed term translations stored in a local database.</li>
+    <li><strong>Browsing History &amp; Bookmarks:</strong> Stored locally. You can delete them at any time.</li>
+    <li><strong>Domain Preferences:</strong> Per-site translation and glossary settings.</li>
+    <li><strong>Subscription State:</strong> Play Billing entitlement information stored locally.</li>
+  </ul>
 
-    <h2>6. Third-Party Services</h2>
-    <ul>
-      <li><strong>GeckoView (Mozilla)</strong> — Browser engine</li>
-      <li><strong>Google AdMob</strong> — Rewarded advertisements (may collect advertising ID, device info, IP address)</li>
-      <li><strong>Google ML Kit</strong> — On-device OCR</li>
-      <li><strong>Google Play Billing</strong> — Subscription payments</li>
-      <li><strong>Cloudflare Workers</strong> — Translation proxy</li>
-      <li><strong>Sentry</strong> — Crash reporting (anonymous)</li>
-      <li><strong>HuggingFace</strong> — Model downloads</li>
-    </ul>
+  <h2>5. Cookies and Site Data</h2>
+  <p>The App uses GeckoView (Mozilla's browser engine) to render web pages. Websites you visit may set cookies and store site data as they would in any browser. You can clear cookies and site data at any time in Settings.</p>
 
-    <h2>7. Data Sharing</h2>
-    <p>We do NOT sell, rent, or share user data. Only the hashed device ID and explicitly chosen translation text leave your device.</p>
+  <h2>6. Third-Party Services</h2>
+  <p>The App includes the following third-party SDKs and services:</p>
+  <ul>
+    <li><strong>GeckoView (Mozilla):</strong> Browser engine.</li>
+    <li><strong>Google AdMob:</strong> Rewarded advertising. Collects advertising ID (AAID), device information, and IP address for ad delivery and measurement. <a href="https://policies.google.com/privacy">Privacy Policy</a></li>
+    <li><strong>Google Play Billing:</strong> Subscription payment processing. All payment data is handled by Google Play.</li>
+    <li><strong>Cloudflare Workers:</strong> Proxy service for free tier and subscription translation. See Section 2.1 for data handling.</li>
+    <li><strong>OpenRouter:</strong> AI model routing service used by the proxy. Data handling is governed by OpenRouter's privacy policy.</li>
+    <li><strong>Sentry:</strong> Crash reporting (when configured). Collects anonymous crash data to help improve app stability.</li>
+    <li><strong>HuggingFace:</strong> Model downloads for semantic embedding (glossary search). Data is processed entirely on-device.</li>
+  </ul>
 
-    <h2>8. Children's Privacy</h2>
-    <p>Not directed at children under 13. We do not knowingly collect data from children.</p>
+  <h2>7. Data Sharing</h2>
+  <p>We do NOT sell, rent, or share any user data with third parties. The only data that leaves your device consists of:</p>
+  <ul>
+    <li>Hashed device identifier (for free tier quota management, see Section 2.1).</li>
+    <li>Text you explicitly choose to translate (sent via proxy or directly to AI providers).</li>
+  </ul>
 
-    <h2>9. Your Rights</h2>
-    <p>Delete data anytime via Settings or by uninstalling. The hashed device ID auto-expires after 24 hours.</p>
+  <h2>8. Children's Privacy</h2>
+  <p>The App is not directed at children under 13. We do not knowingly collect data from children.</p>
 
-    <h2>10. Changes</h2>
-    <p>This policy may be updated. Changes will be reflected in the App.</p>
+  <h2>9. Your Rights</h2>
+  <p>Since most data is stored locally on your device, you can delete it at any time by:</p>
+  <ul>
+    <li>Clearing browsing data in Settings</li>
+    <li>Clearing translation cache in Settings</li>
+    <li>Uninstalling the App (removes all local data)</li>
+  </ul>
+  <p>The hashed device identifier stored in Cloudflare Workers KV is automatically deleted after 24 hours. For immediate deletion, please contact us using the information in Section 11.</p>
 
-    <h2>11. Contact</h2>
-    <p><a href="mailto:badmumyo@gmail.com">badmumyo@gmail.com</a></p>
-  </div>
-  <footer><p>&copy; 2026 Badmumyo Studio</p></footer>
+  <h2>10. Changes to This Policy</h2>
+  <p>We may update this Privacy Policy from time to time. Changes will be reflected in the App.</p>
+
+  <h2>11. Contact</h2>
+  <p>For questions about this Privacy Policy, please contact us at: <a href="mailto:badmumyo@gmail.com">badmumyo@gmail.com</a></p>
+
+  <h2>12. Google Play Data Safety Disclosure</h2>
+  <p>For the Google Play Data Safety section, we declare the following:</p>
+  <ul>
+    <li><strong>Device or other IDs:</strong> Collected (hashed Android ID for free tier management), transmitted to Cloudflare Workers KV, automatically deleted after 24 hours.</li>
+    <li><strong>Personal info (API keys):</strong> Collected, stored encrypted on device, not shared.</li>
+    <li><strong>Web browsing history:</strong> Collected, stored on device, not shared.</li>
+    <li><strong>App interactions:</strong> Collected (crash logs via Sentry, when configured).</li>
+    <li><strong>Web page content:</strong> Transmitted to third-party AI providers when translation is used (disclosed via in-app consent dialog).</li>
+    <li><strong>Purchase history:</strong> Collected for subscription management via Google Play Billing.</li>
+  </ul>
+
+  <p style="margin-top:48px;font-size:12px;color:#999;">&copy; 2026 Badmumyo Studio</p>
+</div>
 </body>
 </html>
