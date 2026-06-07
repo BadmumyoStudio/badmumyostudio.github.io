@@ -99,12 +99,9 @@
   <h2>12. Google Play Data Safety Disclosure</h2>
   <p>For the Google Play Data Safety section, we declare the following:</p>
   <ul>
-    <li><strong>Device or other IDs:</strong> Collected (hashed Android ID for free tier management), transmitted to Cloudflare Workers KV, automatically deleted after 24 hours.</li>
-    <li><strong>Personal info (API keys):</strong> Collected, stored encrypted on device, not shared.</li>
+    <li><strong>Device or other IDs:</strong> Collected (SHA-256 hashed Android ID for free tier management, transmitted to Cloudflare Workers KV, automatically deleted after 24 hours; Advertising ID collected by Google AdMob for ad delivery).</li>
     <li><strong>Web browsing history:</strong> Collected, stored on device, not shared.</li>
-    <li><strong>App interactions:</strong> Collected (crash logs via Sentry, when configured).</li>
-    <li><strong>Web page content:</strong> Transmitted to third-party AI providers when translation is used (disclosed via in-app consent dialog).</li>
-    <li><strong>Purchase history:</strong> Collected for subscription management via Google Play Billing.</li>
+    <li><strong>Crash logs:</strong> Collected (anonymous crash data via Sentry, when configured).</li>
   </ul>
 
   <p style="margin-top:48px;font-size:12px;color:#999;">&copy; 2026 Badmumyo Studio</p>
