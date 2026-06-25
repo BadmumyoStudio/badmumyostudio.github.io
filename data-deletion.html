@@ -37,30 +37,19 @@
       <th style="text-align:left;padding:8px;">Retention</th>
     </tr>
     <tr style="border-bottom:1px solid var(--border);">
-      <td style="padding:8px;">Browsing history, bookmarks, cache, cookies</td>
-      <td style="padding:8px;">Settings → Clear Data</td>
-      <td style="padding:8px;">Until manually deleted</td>
+      <td style="padding:8px;">Browsing history, bookmarks, cache, cookies, API keys, glossary</td>
+      <td style="padding:8px;">Settings → Clear Data, or uninstall</td>
+      <td style="padding:8px;">Until you delete</td>
     </tr>
     <tr style="border-bottom:1px solid var(--border);">
-      <td style="padding:8px;">API keys, glossary</td>
-      <td style="padding:8px;">Settings or uninstall</td>
-      <td style="padding:8px;">Until manually deleted</td>
-    </tr>
-    <tr style="border-bottom:1px solid var(--border);">
-      <td style="padding:8px;">Hashed device ID &amp; token usage (proxy quota)</td>
+      <td style="padding:8px;">Hashed device ID and usage (proxy quota)</td>
       <td style="padding:8px;">Email request (see below)</td>
-      <td style="padding:8px;">Retained until deletion request — <strong>not auto-deleted after 24 hours</strong></td>
-    </tr>
-    <tr style="border-bottom:1px solid var(--border);">
-      <td style="padding:8px;">Daily ad-view counter</td>
-      <td style="padding:8px;">Automatic</td>
-      <td style="padding:8px;">KV entry expires after ~2 days</td>
+      <td style="padding:8px;">Until deletion request</td>
     </tr>
   </table>
 
   <h2>Request deletion of server-side data</h2>
-  <p>The data stored on our servers for quota management is your <strong>SHA-256 hashed Android ID</strong> and associated <strong>token usage counters</strong> on Cloudflare Workers. This is used to enforce free-tier and subscription token pools. It is <strong>not reset daily</strong> and is <strong>not automatically deleted after 24 hours</strong>.</p>
-  <p>To request immediate deletion of all server-side data associated with your device, email: <a href="mailto:badmumyo@gmail.com">badmumyo@gmail.com</a></p>
+  <p>To request deletion of server-side quota data associated with your device, email: <a href="mailto:support@novelbrowser.app">support@novelbrowser.app</a></p>
   <p>Please include the fact that you are requesting Novel Browser proxy quota data deletion. We will process requests within a reasonable time.</p>
 
   <p style="margin-top:48px;font-size:12px;color:#999;">&copy; 2026 Badmumyo Studio</p>
