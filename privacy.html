@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,29 +11,33 @@
   <a href="/" class="back">← Badmumyo Studio</a>
 
   <h1>Privacy Policy — Novel Browser</h1>
-  <p style="color:var(--text-dim);font-size:13px;">Last updated: June 3, 2026</p>
+  <p style="color:var(--text-dim);font-size:13px;">Last updated: June 26, 2026</p>
 
   <h2>1. Overview</h2>
   <p>Novel Browser ("the App") is a web browser with AI-powered translation capabilities. This Privacy Policy explains how your data is handled when you use the App.</p>
 
   <h2>2. Data We Collect</h2>
-  <p><strong>We do NOT collect, store, or transmit personal data to our own servers except as described below for free tier management.</strong></p>
+  <p><strong>We do NOT collect, store, or transmit personal data to our own servers except as described below for translation quota management.</strong></p>
 
-  <h3>2.1 Device Identifier (Free Tier Management)</h3>
-  <p>When you use the free translation tier, the App collects your device's Android ID (<code>Settings.Secure.ANDROID_ID</code>) to manage your daily translation quota. This identifier:</p>
+  <h3>2.1 Device Identifier and Token Quota</h3>
+  <p>When you use the free or subscription translation tiers via our proxy service, the App collects your device's Android ID (<code>Settings.Secure.ANDROID_ID</code>) to enforce <strong>token quotas</strong>. This identifier:</p>
   <ul>
     <li>Is <strong>one-way hashed with SHA-256</strong> before transmission — the original value is never stored or transmitted.</li>
     <li>Is sent in the <code>X-Device-Signature</code> HTTP header to our proxy service (Cloudflare Workers).</li>
-    <li>Is stored in Cloudflare Workers KV and <strong>automatically deleted after 24 hours</strong>.</li>
-    <li>Is used <strong>solely</strong> for counting and enforcing daily free translation limits.</li>
+    <li>Is stored on our servers (Cloudflare Workers Durable Objects and KV) together with cumulative <strong>token usage</strong> for your device.</li>
+    <li>Is <strong>not reset daily.</strong> The free tier uses a per-device token pool (currently 100,000 tokens) without a daily reset schedule. Paid tiers use monthly token pools that reset each calendar month.</li>
+    <li>Is used solely to enforce translation quotas and prevent abuse (e.g., circumventing limits via reinstallation).</li>
   </ul>
-  <p><strong>Purpose:</strong> To prevent abuse of the free translation tier (e.g., unlimited usage via reinstallation) without requiring user registration.</p>
+  <p><strong>Purpose:</strong> To provide fair-use translation limits without requiring user account creation.</p>
+
+  <h3>2.2 Rewarded Advertising (Free Tier Bonus)</h3>
+  <p>If you choose to watch rewarded ads, Google AdMob may collect your Advertising ID (AAID), device information, and IP address for ad delivery. When you complete a rewarded ad, our proxy may grant additional translation tokens (currently up to 5 rewarded views per day). Daily ad-view counts are stored in Cloudflare KV with a short retention period (approximately 2 days).</p>
 
   <h2>3. Data Sent to Third-Party AI Providers</h2>
-  <p>When you use the translation feature, the text content of the web page you are currently viewing is sent to AI providers. The routing depends on your plan:</p>
+  <p>When you use the translation feature, the text content of the web page you are currently viewing is sent to an AI provider. Depending on your plan:</p>
   <ul>
-    <li><strong>Free Tier &amp; Subscription Plan:</strong> Text is routed through our proxy service (Cloudflare Workers) and forwarded to OpenRouter, which routes the request to the configured AI model (e.g., Google Gemini).</li>
-    <li><strong>BYOK (Bring Your Own Key) Plan:</strong> Text is sent directly to the AI provider you configure (OpenAI, Anthropic, Google Gemini, OpenRouter, or a custom endpoint).</li>
+    <li><strong>Free Tier &amp; Subscription Plan (proxy):</strong> Text is routed through our proxy service (Cloudflare Workers) and forwarded to a third-party AI API provider.</li>
+    <li><strong>BYOK (Bring Your Own Key):</strong> Available with a paid subscription. Text is sent directly to the AI provider you configure without using our proxy.</li>
   </ul>
   <p>This is a core function of the translation feature and cannot be avoided when translation is active.</p>
   <p><strong>You are responsible for reviewing the privacy policies of the AI providers you choose to use:</strong></p>
@@ -45,63 +49,40 @@
   </ul>
 
   <h2>4. Data Stored on Your Device</h2>
-  <p>The following data is stored locally on your device and never transmitted to us:</p>
+  <p>The following data is stored locally on your device and is not transmitted to us as personal data:</p>
   <ul>
     <li><strong>API Keys:</strong> Stored encrypted using Android Keystore (AES-256-GCM).</li>
-    <li><strong>Translation Cache:</strong> Previously translated text is cached locally to reduce API costs on repeat visits. You can clear this cache at any time in Settings.</li>
-    <li><strong>Glossary Terms:</strong> User-managed term translations stored in a local database.</li>
-    <li><strong>Browsing History &amp; Bookmarks:</strong> Stored locally. You can delete them at any time.</li>
-    <li><strong>Domain Preferences:</strong> Per-site translation and glossary settings.</li>
-    <li><strong>Subscription State:</strong> Play Billing entitlement information stored locally.</li>
+    <li><strong>Translation Cache:</strong> Previously translated text cached locally (clearable in Settings).</li>
+    <li><strong>Glossary Terms, Browsing History, Bookmarks, Domain Preferences, Subscription State.</strong></li>
   </ul>
 
   <h2>5. Cookies and Site Data</h2>
-  <p>The App uses GeckoView (Mozilla's browser engine) to render web pages. Websites you visit may set cookies and store site data as they would in any browser. You can clear cookies and site data at any time in Settings.</p>
+  <p>The App uses GeckoView (Mozilla's browser engine). Websites you visit may set cookies as in any browser. You can clear cookies and site data in Settings.</p>
 
   <h2>6. Third-Party Services</h2>
-  <p>The App includes the following third-party SDKs and services:</p>
-  <ul>
-    <li><strong>GeckoView (Mozilla):</strong> Browser engine.</li>
-    <li><strong>Google AdMob:</strong> Rewarded advertising. Collects advertising ID (AAID), device information, and IP address for ad delivery and measurement. <a href="https://policies.google.com/privacy">Privacy Policy</a></li>
-    <li><strong>Google UMP (User Messaging Platform):</strong> GDPR consent management for EEA/UK users. Integrated with AdMob. Does not collect additional data beyond consent state.</li>
-    <li><strong>Google Play Billing:</strong> Subscription payment processing. All payment data is handled by Google Play.</li>
-    <li><strong>Cloudflare Workers:</strong> Proxy service for free tier and subscription translation. See Section 2.1 for data handling.</li>
-    <li><strong>OpenRouter:</strong> AI model routing service used by the proxy. Data handling is governed by OpenRouter's privacy policy.</li>
-    <li><strong>Sentry:</strong> Crash reporting (when configured). Collects anonymous crash data to help improve app stability.</li>
-    <li><strong>HuggingFace:</strong> Model downloads for semantic embedding (glossary search). Data is processed entirely on-device.</li>
-  </ul>
+  <p>The App includes third-party SDKs and services including GeckoView, Google AdMob, Google UMP, Google Play Billing, Cloudflare Workers, OpenRouter, Sentry (when configured), and on-device components for glossary search.</p>
 
   <h2>7. Data Sharing</h2>
-  <p>We do NOT sell, rent, or share any user data with third parties. The only data that leaves your device consists of:</p>
-  <ul>
-    <li>Hashed device identifier (for free tier quota management, see Section 2.1).</li>
-    <li>Text you explicitly choose to translate (sent via proxy or directly to AI providers).</li>
-  </ul>
+  <p>We do NOT sell, rent, or share user data with third parties for marketing. Data that leaves your device for our service consists of the hashed device identifier and token usage counters, text you choose to translate, and advertising identifiers processed by AdMob when you interact with ads.</p>
 
   <h2>8. Children's Privacy</h2>
-  <p>The App is not directed at children under 13. We do not knowingly collect data from children.</p>
+  <p>The App is not directed at children under 13.</p>
 
   <h2>9. Your Rights</h2>
-  <p>Since most data is stored locally on your device, you can delete it at any time by:</p>
-  <ul>
-    <li>Clearing browsing data in Settings</li>
-    <li>Clearing translation cache in Settings</li>
-    <li>Uninstalling the App (removes all local data)</li>
-  </ul>
-  <p>The hashed device identifier stored in Cloudflare Workers KV is automatically deleted after 24 hours. For immediate deletion, please contact us using the information in Section 11.</p>
+  <p>Delete local data in Settings → Privacy &amp; Data, clear translation cache, or uninstall the App.</p>
+  <p><strong>Server-side quota data</strong> (hashed device identifier and token usage) is retained until you request deletion. For immediate deletion, contact us (Section 11) or see <a href="/data-deletion.html">Data Deletion</a>.</p>
 
   <h2>10. Changes to This Policy</h2>
-  <p>We may update this Privacy Policy from time to time. Changes will be reflected in the App.</p>
+  <p>We may update this Privacy Policy from time to time. Changes will be reflected in the App and on this website.</p>
 
   <h2>11. Contact</h2>
   <p>For questions about this Privacy Policy, please contact us at: <a href="mailto:badmumyo@gmail.com">badmumyo@gmail.com</a></p>
 
   <h2>12. Google Play Data Safety Disclosure</h2>
-  <p>For the Google Play Data Safety section, we declare the following:</p>
   <ul>
-    <li><strong>Device or other IDs:</strong> Collected (SHA-256 hashed Android ID for free tier management, transmitted to Cloudflare Workers KV, automatically deleted after 24 hours; Advertising ID collected by Google AdMob for ad delivery).</li>
-    <li><strong>Web browsing history:</strong> Collected, stored on device, not shared.</li>
-    <li><strong>Crash logs:</strong> Collected (anonymous crash data via Sentry, when configured).</li>
+    <li><strong>Device or other IDs:</strong> Collected — SHA-256 hashed Android ID for token quota (retained until deletion request); AAID via AdMob when using rewarded ads.</li>
+    <li><strong>Web browsing history:</strong> Stored on device only; not transmitted to us.</li>
+    <li><strong>Crash logs:</strong> Collected when configured (anonymous data via Sentry).</li>
   </ul>
 
   <p style="margin-top:48px;font-size:12px;color:#999;">&copy; 2026 Badmumyo Studio</p>
