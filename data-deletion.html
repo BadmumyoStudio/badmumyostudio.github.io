@@ -44,14 +44,24 @@
     <tr style="border-bottom:1px solid var(--border);">
       <td style="padding:8px;">Hashed device ID and usage (proxy quota)</td>
       <td style="padding:8px;">Email request (see below)</td>
-      <td style="padding:8px;">Until deletion request</td>
+      <td style="padding:8px;">Usage erased on request; see fraud-prevention row</td>
+    </tr>
+    <tr style="border-bottom:1px solid var(--border);">
+      <td style="padding:8px;">Hashed device ID + free-tier-used flag (fraud prevention)</td>
+      <td style="padding:8px;">Retained after deletion request</td>
+      <td style="padding:8px;">Until no longer needed for abuse prevention (not personally identifiable)</td>
     </tr>
   </table>
 
   <h2>Request deletion of server-side data</h2>
-  <p>To request deletion of server-side quota data associated with your device, email:</p>
-  <p><a href="mailto:badmumyo@gmail.com?subject=Novel%20Browser%20Data%20Deletion%20Request">badmumyo@gmail.com</a></p>
-  <p>Please use the subject line <strong>Novel Browser Data Deletion Request</strong> and state that you are requesting proxy quota data deletion. We process requests within 7 business days.</p>
+  <ol>
+    <li>Open <strong>Settings → Privacy &amp; Data</strong> in Novel Browser</li>
+    <li>Copy your <strong>Deletion Request ID</strong> (8 characters)</li>
+    <li>Email <a href="mailto:badmumyo@gmail.com?subject=Novel%20Browser%20Data%20Deletion%20Request">badmumyo@gmail.com</a> with subject <strong>Novel Browser Data Deletion Request</strong></li>
+    <li>Include your Deletion Request ID in the message body</li>
+  </ol>
+  <p>We process requests within 7 business days. Requests without a valid Deletion Request ID may not be processed.</p>
+  <p><strong>Important:</strong> After deletion, server-side usage records are erased, but free translation quota is <strong>not</strong> restored. Subscription and BYOK features continue to work as before.</p>
 
   <h2>Other questions</h2>
   <p>For other privacy questions: <a href="mailto:badmumyo@gmail.com">badmumyo@gmail.com</a></p>
