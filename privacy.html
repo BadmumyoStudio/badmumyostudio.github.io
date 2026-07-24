@@ -11,29 +11,30 @@
   <a href="/" class="back">← Badmumyo Studio</a>
 
   <h1>Privacy Policy — Novel Browser</h1>
-  <p style="color:var(--text-dim);font-size:13px;">Last updated: June 26, 2026</p>
+  <p style="color:var(--text-dim);font-size:13px;">Last updated: July 24, 2026</p>
 
   <h2>1. Overview</h2>
   <p>Novel Browser ("the App") is a web browser with AI-powered translation capabilities. This Privacy Policy explains how your data is handled when you use the App.</p>
 
   <h2>2. Data We Collect</h2>
-  <p><strong>We do NOT collect, store, or transmit personal data to our own servers except as described below for managing translation usage limits on our proxy service.</strong></p>
+  <p><strong>The App processes data only as described in this Policy. Translation text may pass through our translation service and an AI provider as described in Section 3. Hashed device identifiers and quota or rewarded-ad usage records are handled as described below.</strong></p>
 
-  <h3>2.1 Device Identifier (Proxy Usage Limits)</h3>
-  <p>When you use translation through our proxy (free or subscription), the App collects your device's Android ID, hashed with SHA-256 before transmission. The original value is never stored or sent. We store the hashed identifier and the amount of translation usage associated with your device on our proxy servers until you request deletion (Section 9). Usage limits are not reset on a daily schedule.</p>
+  <h3>2.1 Device Identifier (Translation Usage Limits)</h3>
+  <p>When you use translation through our translation service (free or subscription), the App collects your device's Android ID, hashed with SHA-256 before transmission. The original value is never stored or sent. We store the hashed identifier and the amount of translation usage associated with your device on our translation service servers until you request deletion (Section 9). The base free allowance is not reset on a daily schedule. Rewarded-ad allowance is tracked separately from the base free allowance and may include a limited carryover period.</p>
   <p><strong>Purpose:</strong> To provide fair-use translation limits without requiring user account creation.</p>
 
   <h3>2.2 Rewarded Advertising (Optional)</h3>
-  <p>If you choose to watch rewarded ads, Google AdMob may collect your Advertising ID (AAID) and related data for ad delivery. Completing a rewarded ad may increase your translation allowance through our proxy.</p>
+  <p>If you choose to watch rewarded ads, Google AdMob may collect your Advertising ID (AAID) and related data for ad delivery. Completing a rewarded ad may increase your translation allowance through our translation service. We store ad view counts and rewarded-ad allowance usage associated with the hashed device identifier to apply and enforce that allowance.</p>
 
   <h2>3. Data Sent to Third-Party AI Providers</h2>
-  <p>When you use the translation feature, the text content of the web page you are currently viewing is sent to an AI provider. Depending on your plan:</p>
+  <p>When you use translation, text visible on the current page and selected for translation is sent off your device for processing. The App cannot determine whether that text contains personal or sensitive information. Depending on your plan:</p>
   <ul>
-    <li><strong>Free Tier &amp; Subscription Plan (proxy):</strong> Text is routed through our proxy service (Cloudflare Workers) and forwarded to a third-party AI API provider.</li>
-    <li><strong>BYOK (Bring Your Own Key):</strong> Available with a paid subscription. Text is sent directly to the AI provider you configure without using our proxy.</li>
+    <li><strong>Free Tier &amp; Subscription Plan (translation service):</strong> Text is routed through our translation service and processed by contracted cloud infrastructure and AI processing providers solely to provide translation.</li>
+    <li><strong>BYOK (Bring Your Own Key):</strong> Available with a paid subscription. Text is sent directly to the AI provider you configure without using our translation service.</li>
   </ul>
-  <p>Translation is a core function and cannot be avoided when translation is active.</p>
-  <p><strong>You are responsible for reviewing the privacy policies of the AI providers involved:</strong></p>
+  <p>Our translation service does not store translation text. The currently contracted AI processing service states that it does not store inputs or outputs and does not use customer data to train, retrain, or fine-tune hosted models.</p>
+  <p>Text is sent only when you activate translation or a translation setting you enabled triggers it. Do not translate pages containing sensitive information unless you agree to this processing.</p>
+  <p><strong>For BYOK, processing and retention are also governed by the policy of the provider you configure:</strong></p>
   <ul>
     <li>OpenAI: <a href="https://openai.com/policies/privacy-policy">https://openai.com/policies/privacy-policy</a></li>
     <li>Anthropic: <a href="https://www.anthropic.com/legal/privacy">https://www.anthropic.com/legal/privacy</a></li>
@@ -63,7 +64,7 @@
 
   <h2>9. Your Rights</h2>
   <p>Delete local data in Settings → Privacy &amp; Data, clear translation cache, or uninstall the App.</p>
-  <p><strong>Server-side quota data</strong> is retained until you request deletion. Email <a href="mailto:badmumyo@gmail.com?subject=Novel%20Browser%20Data%20Deletion%20Request">badmumyo@gmail.com</a> with your Deletion Request ID from Settings → Privacy &amp; Data, or see <a href="/data-deletion.html">Data Deletion</a>.</p>
+  <p><strong>Server-side quota data</strong> includes hashed device identifiers, translation service usage records, ad view counts, and rewarded-ad allowance usage. It is retained until you request deletion. Email <a href="mailto:badmumyo@gmail.com?subject=Novel%20Browser%20Data%20Deletion%20Request">badmumyo@gmail.com</a> with your Deletion Request ID from Settings → Privacy &amp; Data, or see <a href="/data-deletion.html">Data Deletion</a>.</p>
   <p>Upon deletion, usage records are erased. To prevent abuse, we may retain a hashed device identifier and a free-tier-used flag (not personally identifiable). Free translation quota is not restored after deletion.</p>
 
   <h2>10. Changes to This Policy</h2>
@@ -74,9 +75,10 @@
 
   <h2>12. Google Play Data Safety Disclosure</h2>
   <ul>
-    <li><strong>Device or other IDs:</strong> SHA-256 hashed Android ID for proxy usage limits (retained until deletion request); AAID via AdMob when using rewarded ads.</li>
+    <li><strong>Translation text:</strong> Sent off-device only when translation is used, for app functionality. It is processed for the real-time request and may contain personal or sensitive information from the page.</li>
+    <li><strong>Device or other IDs:</strong> SHA-256 hashed Android ID for translation usage limits; related usage records are retained until deletion, while a hashed identifier and free-tier-used flag may remain for fraud prevention. Ad view counts and rewarded-ad allowance usage are associated with the hashed identifier. AAID may be handled by AdMob when rewarded ads are used.</li>
     <li><strong>Web browsing history:</strong> Stored on device only; not transmitted to us.</li>
-    <li><strong>Crash logs:</strong> Collected when configured (anonymous data via Sentry).</li>
+    <li><strong>Crash logs and diagnostics:</strong> Technical crash and diagnostic data may be collected via Sentry when configured.</li>
   </ul>
 
   <p style="margin-top:48px;font-size:12px;color:#999;">&copy; 2026 Badmumyo Studio</p>
