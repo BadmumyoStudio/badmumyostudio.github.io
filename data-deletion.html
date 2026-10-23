@@ -44,7 +44,7 @@
     <tr style="border-bottom:1px solid var(--border);">
       <td style="padding:8px;">Usage analytics events and Analytics ID (optional, only if you chose to send usage data)</td>
       <td style="padding:8px;">Turn off sending in Settings → Privacy &amp; Data (deletes automatically), or email request (see below)</td>
-      <td style="padding:8px;">Deleted within 30 days of turning it off; deleted automatically 11 months after collection at the latest</td>
+      <td style="padding:8px;">Submitted for deletion as soon as we receive it, aimed to finish within 30 days; an Analytics ID that has not been used for 11 months is deleted automatically with all of its events</td>
     </tr>
     <tr style="border-bottom:1px solid var(--border);">
       <td style="padding:8px;">Hashed device ID and usage (proxy quota)</td>
@@ -64,9 +64,9 @@
     <li>Open <strong>Settings → Privacy &amp; Data</strong> in Novel Browser</li>
     <li>Turn off <strong>Send usage data</strong></li>
     <li>The app immediately sends one deletion request for every Analytics ID this device used. If the device is offline, it keeps the request and retries on the next launch or when the device is back online until it is accepted.</li>
-    <li>We delete the matching events within 30 days. Events are also deleted automatically 11 months after they were collected, at the latest.</li>
+    <li>We submit the deletion as soon as the request reaches us and aim to finish within 30 days. PostHog processes deletions asynchronously, so they can take longer to complete, and we keep checking each request until it is done. If the device was offline, the request reaches us when it reconnects. An Analytics ID that has not been used for 11 months is deleted automatically together with all of its events.</li>
   </ol>
-  <p>Settings → Privacy &amp; Data lists every Analytics ID this device has used, so you can check what was deleted. You can also email <a href="mailto:badmumyo@gmail.com?subject=Novel%20Browser%20Analytics%20Deletion%20Request">badmumyo@gmail.com</a> with subject <strong>Novel Browser Analytics Deletion Request</strong> and those Analytics IDs, and we will handle the deletion for you.</p>
+  <p>Settings → Privacy &amp; Data lists every Analytics ID this device has used, so you can identify which data your request covers. You can also email <a href="mailto:badmumyo@gmail.com?subject=Novel%20Browser%20Analytics%20Deletion%20Request">badmumyo@gmail.com</a> with subject <strong>Novel Browser Analytics Deletion Request</strong> and those Analytics IDs, and we will handle the deletion for you.</p>
   <p>Usage analytics never contains page URLs, domain names, page titles, page text, translated text, text you type, your search queries, your reading log, or your advertising ID, so there is no such content to delete.</p>
 
   <h2>Request deletion of server-side data</h2>
