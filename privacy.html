@@ -1,87 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy — Novel Browser | Badmumyo Studio</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Privacy Policy — Novel Browser | Badmumyo Studio</title><link rel="stylesheet" href="style.css"></head><body>
 <div class="privacy">
   <a href="/" class="back">← Badmumyo Studio</a>
-
-  <h1>Privacy Policy — Novel Browser</h1>
-  <p style="color:var(--text-dim);font-size:13px;">Last updated: July 24, 2026</p>
-
-  <h2>1. Overview</h2>
-  <p>Novel Browser ("the App") is a web browser with AI-powered translation capabilities. This Privacy Policy explains how your data is handled when you use the App.</p>
-
-  <h2>2. Data We Collect</h2>
-  <p><strong>The App processes data only as described in this Policy. Translation text may pass through our translation service and an AI provider as described in Section 3. Hashed device identifiers and quota or rewarded-ad usage records are handled as described below.</strong></p>
-
-  <h3>2.1 Device Identifier (Translation Usage Limits)</h3>
-  <p>When you use translation through our translation service (free or subscription), the App collects your device's Android ID, hashed with SHA-256 before transmission. The original value is never stored or sent. We store the hashed identifier and the amount of translation usage associated with your device on our translation service servers until you request deletion (Section 9). The base free allowance is not reset on a daily schedule. Rewarded-ad allowance is tracked separately from the base free allowance and may include a limited carryover period.</p>
-  <p><strong>Purpose:</strong> To provide fair-use translation limits without requiring user account creation.</p>
-
-  <h3>2.2 Rewarded Advertising (Optional)</h3>
-  <p>If you choose to watch rewarded ads, Google AdMob may collect your Advertising ID (AAID) and related data for ad delivery. Completing a rewarded ad may increase your translation allowance through our translation service. We store ad view counts and rewarded-ad allowance usage associated with the hashed device identifier to apply and enforce that allowance.</p>
-
-  <h2>3. Data Sent to Third-Party AI Providers</h2>
-  <p>When you use translation, text visible on the current page and selected for translation is sent off your device for processing. The App cannot determine whether that text contains personal or sensitive information. Depending on your plan:</p>
-  <ul>
-    <li><strong>Free Tier &amp; Subscription Plan (translation service):</strong> Text is routed through our translation service and processed by contracted cloud infrastructure and AI processing providers solely to provide translation.</li>
-    <li><strong>BYOK (Bring Your Own Key):</strong> Available with a paid subscription. Text is sent directly to the AI provider you configure without using our translation service.</li>
-  </ul>
-  <p>Our translation service does not store translation text. The currently contracted AI processing service states that it does not store inputs or outputs and does not use customer data to train, retrain, or fine-tune hosted models.</p>
-  <p>Text is sent only when you activate translation or a translation setting you enabled triggers it. Do not translate pages containing sensitive information unless you agree to this processing.</p>
-  <p><strong>For BYOK, processing and retention are also governed by the policy of the provider you configure:</strong></p>
-  <ul>
-    <li>OpenAI: <a href="https://openai.com/policies/privacy-policy">https://openai.com/policies/privacy-policy</a></li>
-    <li>Anthropic: <a href="https://www.anthropic.com/legal/privacy">https://www.anthropic.com/legal/privacy</a></li>
-    <li>Google Gemini: <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></li>
-    <li>OpenRouter: <a href="https://openrouter.ai/privacy">https://openrouter.ai/privacy</a></li>
-  </ul>
-
-  <h2>4. Data Stored on Your Device</h2>
-  <p>The following data is stored locally on your device and is not transmitted to us as personal data:</p>
-  <ul>
-    <li><strong>API Keys:</strong> Stored encrypted using Android Keystore (AES-256-GCM).</li>
-    <li><strong>Translation Cache:</strong> Previously translated text cached locally (clearable in Settings).</li>
-    <li><strong>Glossary Terms, Browsing History, Bookmarks, Domain Preferences, Subscription Status.</strong></li>
-  </ul>
-
-  <h2>5. Cookies and Site Data</h2>
-  <p>The App uses GeckoView (Mozilla's browser engine). Websites you visit may set cookies as in any browser. You can clear cookies and site data in Settings.</p>
-
-  <h2>6. Third-Party Services</h2>
-  <p>The App may use third-party components for browsing, advertising, payments, optional crash reporting, and translation routing. Each provider handles data under its own policies.</p>
-
-  <h2>7. Data Sharing</h2>
-  <p>We do NOT sell, rent, or share user data with third parties for marketing. Data that leaves your device for our service consists of the hashed device identifier and usage data for quota management, text you choose to translate, and advertising identifiers processed by AdMob when you interact with ads.</p>
-
-  <h2>8. Children's Privacy</h2>
-  <p>The App is not directed at children under 13.</p>
-
-  <h2>9. Your Rights</h2>
-  <p>Delete local data in Settings → Privacy &amp; Data, clear translation cache, or uninstall the App.</p>
-  <p><strong>Server-side quota data</strong> includes hashed device identifiers, translation service usage records, ad view counts, and rewarded-ad allowance usage. It is retained until you request deletion. Email <a href="mailto:badmumyo@gmail.com?subject=Novel%20Browser%20Data%20Deletion%20Request">badmumyo@gmail.com</a> with your Deletion Request ID from Settings → Privacy &amp; Data, or see <a href="/data-deletion.html">Data Deletion</a>.</p>
-  <p>Upon deletion, usage records are erased. To prevent abuse, we may retain a hashed device identifier and a free-tier-used flag (not personally identifiable). Free translation quota is not restored after deletion.</p>
-
-  <h2>10. Changes to This Policy</h2>
-  <p>We may update this Privacy Policy from time to time. Changes will be reflected in the App and on this website.</p>
-
-  <h2>11. Contact</h2>
-  <p>For questions about this Privacy Policy, please contact us at: <a href="mailto:badmumyo@gmail.com">badmumyo@gmail.com</a></p>
-
-  <h2>12. Google Play Data Safety Disclosure</h2>
-  <ul>
-    <li><strong>Translation text:</strong> Sent off-device only when translation is used, for app functionality. It is processed for the real-time request and may contain personal or sensitive information from the page.</li>
-    <li><strong>Device or other IDs:</strong> SHA-256 hashed Android ID for translation usage limits; related usage records are retained until deletion, while a hashed identifier and free-tier-used flag may remain for fraud prevention. Ad view counts and rewarded-ad allowance usage are associated with the hashed identifier. AAID may be handled by AdMob when rewarded ads are used.</li>
-    <li><strong>Web browsing history:</strong> Stored on device only; not transmitted to us.</li>
-    <li><strong>Crash logs and diagnostics:</strong> Technical crash and diagnostic data may be collected via Sentry when configured.</li>
-  </ul>
-
-  <p style="margin-top:48px;font-size:12px;color:#999;">&copy; 2026 Badmumyo Studio</p>
+<h1>Privacy Policy — Novel Browser</h1>
+<p>Last updated: 2026-10-22</p>
+<h2>1. Overview</h2>
+<p>Novel Browser (&quot;the App&quot;) is a web browser with AI-powered translation capabilities. This Privacy Policy explains how your data is handled when you use the App.</p>
+<h2>2. Data We Collect</h2>
+<p>The App processes data only as described in this Policy. Translation text may pass through our translation service and an AI provider as described in Section 3. Hashed device identifiers and quota or rewarded-ad usage records are handled as described below.</p>
+<h3>2.1 Device Identifier (Translation Usage Limits)</h3>
+<p>When you use translation through our translation service (free or subscription), the App collects your device&#x27;s Android ID, hashed with SHA-256 before transmission. The original value is never stored or sent. We store the hashed identifier and the amount of translation usage associated with your device on our translation service servers until you request deletion (Section 9). The base free allowance is not reset on a daily schedule. Rewarded-ad allowance is tracked separately from the base free allowance and may include a limited carryover period.</p>
+<p><strong>Purpose:</strong> To provide fair-use translation limits without requiring user account creation.</p>
+<h3>2.2 Rewarded Advertising (Optional)</h3>
+<p>If you choose to watch rewarded ads, Google AdMob may collect your Advertising ID (AAID) and related data for ad delivery. Completing a rewarded ad may increase your translation allowance through our translation service. We store ad view counts and rewarded-ad allowance usage associated with the hashed device identifier to apply and enforce that allowance.</p>
+<h3>2.3 Usage Analytics (Optional)</h3>
+<p><strong>You choose whether this is sent. Nothing is sent until you choose &quot;Send usage data&quot;</strong>, either on the screen shown at the end of onboarding or later in Settings → Privacy &amp; Data. Choosing &quot;Don&#x27;t send&quot;, or closing that screen, means no usage analytics is sent. Your choice, its time and the Policy version are stored on your device.</p>
+<p>When it is on, the App sends the following to PostHog in the EU region (<code>https://eu.i.posthog.com</code>), under a random analytics ID that is not derived from your name, account, Android ID or advertising ID:</p>
+<ul><li><strong>Events:</strong> consent granted (Policy version) and consent withdrawn (one deletion request per ID); app launch (whether it is the first launch, and how the app was opened: cold start, warm start, or right after choosing to send), onboarding completion (number of steps, onboarding mode), how a URL was entered (address bar, bookmark, history, opened from another app, or shared to the App), page load success (load time, restored or not), page failure (reason category, SSL or not), reader opened (paragraph-count bucket, extraction time) or failed (reason category), translation started (target language), translation completed (duration, character-count bucket, number of chunks as a whole number, outcome) or failed (reason category), quota exhaustion (kind, plan), rewarded-ad grant (placement), and the purchase screen appearing (product, what triggered it).</li><li><strong>Numbers:</strong> timings in milliseconds (page load, reader extraction, translation, launch); session length in seconds; URL length, paragraph count and character count as coarse buckets; and per-session counts of chapters read and translations completed.</li><li><strong>App information:</strong> app version, build number and Android major version.</li></ul>
+<p>We never send, for usage analytics: page URLs, domain names, page titles, page text, translated text, text you type, your search queries, your reading log, or your advertising ID.</p>
+<p><strong>Processor and location.</strong> PostHog, Inc. (service name PostHog) processes this data on our behalf, under our instructions. The data is stored on servers in the European Union (https://posthog.com/privacy). PostHog, Inc. is a US company. We do not build a profile of you, and we do not sell or share this data.</p>
+<p><strong>IP address.</strong> Our PostHog project is configured to discard client IP addresses, and the App also sends the IP field as <code>0.0.0.0</code> with IP-based geolocation disabled. As a result, the events we store do not contain your IP address.</p>
+<p><strong>Legal basis (EEA, UK, Switzerland):</strong> your consent (GDPR Article 6(1)(a)). You can withdraw it at any time.</p>
+<p><strong>Retention:</strong> we do not keep these events longer than one year. We run a weekly job to delete events older than 11 months.</p>
+<p><strong>Turning it off:</strong> you can turn it off at any time in Settings → Privacy &amp; Data. Sending stops immediately. When you turn it off, the App sends one deletion request for each Analytics ID this device used — outside the normal analytics path, containing only that analytics ID, the time it is sent, and a random id used to avoid duplicates — so that we can delete what was already sent. If it cannot be sent (for example while offline) the App keeps it and retries on the next launch or when the device is back online until it is accepted. Settings → Privacy &amp; Data keeps showing every Analytics ID this device has used. We delete the events matched to those IDs within 30 days, without waiting for you to ask.</p>
+<p><strong>Purpose:</strong> to see where the App fails and which features are not used, so we can improve them.</p>
+<p><strong>How we can show your consent:</strong> an analytics ID is generated only after you choose &quot;Send usage data&quot;, and the App then sends one <code>consent_granted</code> event with the version of this Policy. Together with the record kept on your device, this shows which version you agreed to and when. The device record is never sent.</p>
+<h2>3. Data Sent to Third-Party AI Providers</h2>
+<p>When you use translation, text visible on the current page and selected for translation is sent off your device for processing. The App cannot determine whether that text contains personal or sensitive information. Depending on your plan:</p>
+<ul><li><strong>Free Tier &amp; Subscription Plan (translation service):</strong> Your text is routed through our translation service and processed by contracted cloud infrastructure and AI processing providers solely to provide translation.</li><li><strong>BYOK (Bring Your Own Key):</strong> Available with a paid subscription. Your text is sent directly to the AI provider you configure (OpenAI, Anthropic, Google Gemini, OpenRouter, or a custom endpoint) without using our translation service.</li></ul>
+<p>Our translation service does not store translation text. The currently contracted AI processing service states that it does not store inputs or outputs and does not use customer data to train, retrain, or fine-tune hosted models.</p>
+<p>Text is sent only when you activate translation or a translation setting you enabled triggers it. Do not translate pages containing sensitive information unless you agree to this processing.</p>
+<p>For BYOK, processing and retention are also governed by the policy of the provider you configure:
+- OpenAI: https://openai.com/policies/privacy-policy
+- Anthropic: https://www.anthropic.com/legal/privacy
+- Google Gemini: https://policies.google.com/privacy
+- OpenRouter: https://openrouter.ai/privacy</p>
+<h2>4. Data Stored on Your Device</h2>
+<p>The following data is stored locally on your device and is not transmitted to us as personal data:</p>
+<ul><li><strong>API Keys:</strong> Stored encrypted using Android Keystore (AES-256-GCM).</li><li><strong>Translation Cache:</strong> Previously translated text is cached locally to reduce API costs on repeat visits. You can clear this cache at any time in Settings.</li><li><strong>Glossary Terms:</strong> User-managed term translations stored in a local database.</li><li><strong>Browsing History &amp; Bookmarks:</strong> Stored locally. You can delete them at any time.</li><li><strong>Reading Log:</strong> Page URL, title, domain, reading time, and session timestamps are stored locally for Reader statistics. Page text, translated text, and full page contents are not saved. You can delete the reading log at any time in Settings.</li><li><strong>Domain Preferences:</strong> Per-site translation and glossary settings.</li><li><strong>Subscription Status:</strong> Your Play Billing entitlement status is stored locally.</li></ul>
+<h2>5. Cookies and Site Data</h2>
+<p>The App uses GeckoView (Mozilla&#x27;s browser engine) to render web pages. Websites you visit may set cookies and store site data as they would in any browser. You can clear cookies and site data at any time in Settings.</p>
+<h2>6. Third-Party Services</h2>
+<p>The App may use third-party components for browsing, advertising, payments, optional crash reporting, usage analytics, and translation routing. Each provider handles data under its own policies. Usage analytics is processed by <strong>PostHog, Inc.</strong> (service name PostHog, EU region, https://posthog.com/privacy) as our processor, on our instructions, for the purposes in Section 2.3; for that purpose we never send page content, URLs, or anything you type.</p>
+<h2>7. Data Sharing</h2>
+<p>We do NOT sell, rent, or share any user data with third parties for marketing. The data that leaves your device for our service consists of:</p>
+<ul><li>The hashed device identifier and usage data for quota management (Section 2.1).</li><li>The text you explicitly choose to translate, sent via our translation service or directly to the AI provider you configure.</li><li>Advertising identifiers processed by Google AdMob when you interact with ads.</li><li>Action events when you enable usage analytics (Section 2.3). Our analytics processor acts on our behalf, so this is not sharing.</li></ul>
+<h2>8. Children&#x27;s Privacy</h2>
+<p>The App is not directed at children under 13. We do not knowingly collect data from children.</p>
+<h2>9. Your Rights</h2>
+<p>Since most data is stored locally on your device, you can delete it at any time by:</p>
+<ul><li>Clearing browsing data in Settings → Privacy &amp; Data</li><li>Clearing translation cache in Settings</li><li>Uninstalling the App (removes all local data)</li></ul>
+<p><strong>Server-side quota data</strong> includes hashed device identifiers, translation service usage records, ad view counts, and rewarded-ad allowance usage. It is retained until you request deletion. Email badmumyo@gmail.com (subject: Data Deletion Request) with your <strong>Deletion Request ID</strong> from Settings → Privacy &amp; Data, or see https://badmumyostudio.github.io/data-deletion.html</p>
+<p>Upon deletion, we erase server-side usage records. To prevent abuse, we retain a hashed device identifier and a flag indicating that the free tier was previously used. This data cannot identify you personally and is kept only for fraud prevention. Free translation quota is not restored after deletion.</p>
+<p><strong>Usage analytics</strong> stops sending as soon as you turn it off. Use of the sending ID ends; all IDs remain on your device as history for deletion requests. The App automatically sends one deletion request per ID through a separate path and retries on the next launch or when back online until accepted. We delete the matching events within 30 days without waiting for you to ask. You can also email badmumyo@gmail.com (subject: Analytics Deletion Request) with all Analytics IDs from Settings → Privacy &amp; Data. EEA, UK and Swiss residents may request a copy of the data in Section 2.3 and complain to their local supervisory authority.</p>
+<h2>10. Changes to This Policy</h2>
+<p>We may update this Privacy Policy from time to time. Changes will be reflected in the App and on our website.</p>
+<h2>11. Contact</h2>
+<p>For questions about this Privacy Policy, please contact us at: badmumyo@gmail.com</p>
+<h2>12. Google Play Data Safety Disclosure</h2>
+<p>For the Google Play Data Safety section, we declare the following:</p>
+<ul><li><strong>Translation text:</strong> Sent off-device only when translation is used, for app functionality. It is processed for the real-time request and may contain personal or sensitive information from the page.</li><li><strong>Web browsing history and reading activity:</strong> stored on device only, not transmitted. With usage analytics on, only per-session counts (chapters read, translations completed) are sent — never URLs or titles.</li><li><strong>Crash logs and diagnostics:</strong> crash reports go to Sentry only when a Sentry DSN is configured in the build, which it is not in the build we publish. Performance timings (load, extraction, translation, launch, session length) are sent with usage analytics and declared as Diagnostics.</li><li><strong>Device or other IDs:</strong> a SHA-256 hashed Android ID is used for translation usage limits and is required for that feature; the analytics ID is random and only sent when you choose &quot;Send usage data&quot;.</li><li><strong>Usage data (optional):</strong> the events and numbers in Section 2.3 with a pseudonymous analytics ID, sent to PostHog, Inc. (EU region) only after you choose &quot;Send usage data&quot;. No URLs, domain names, page titles, page text or typed input. Processed on our behalf as a service provider, not shared. Declared as App activity (App interactions), App info and performance (Diagnostics) and Device or other IDs; collected, not shared, optional, for Analytics, and not processed ephemerally.</li></ul>
 </div>
 </body>
 </html>
