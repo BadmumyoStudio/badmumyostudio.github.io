@@ -11,7 +11,7 @@
   <a href="/" class="back">← Badmumyo Studio</a>
 
   <h1>Terms of Service — Novel Browser</h1>
-  <p style="color:var(--text-dim);font-size:13px;">Last updated: July 2, 2026</p>
+  <p style="color:var(--text-dim);font-size:13px;">Last updated: 2026-10-29</p>
 
   <h2>1. Acceptance of Terms</h2>
   <p>By using Novel Browser ("the App"), you agree to these Terms of Service. If you do not agree, do not use the App.</p>
@@ -21,13 +21,15 @@
 
   <h2>3. Plans and Payment</h2>
   <h3>3.1 Free Tier</h3>
-  <p>The App provides limited AI translation via our translation service on the free tier. Limits are shown in the App and may change. The base free allowance is not reset on a daily schedule. You may optionally watch rewarded ads for additional allowance. Rewarded-ad allowance is managed separately from the base free allowance, may be consumed before the base allowance where applicable, and may include a limited carryover period as shown in the App. Free tier use requires a hashed device identifier.</p>
+  <p>There is no base free grant (zero tokens). Without a subscription, translation uses only server-confirmed rewarded-ad buckets. Each reward adds 30,000 tokens, up to seven per day. Yesterday’s and today’s buckets are separate; a request must fit one bucket.</p>
+  <p>No account registration is required. The App creates a random installation UUID and a non-exportable P-256 key in Android Keystore. The server issues an anonymous principal UUID after verifying the signature and Play Integrity. Android ID is not used for translation authentication. Session tokens are kept only in memory. Installation metadata is excluded from backup; a missing or invalid key creates a new installation identity.</p>
+  <p>Deletion may revoke translation access and unlink subscriptions, but does not cancel your Google Play subscription. For data categories, retention exceptions, the deletion_request_id and how to contact us, see Sections 2.1 and 9 of the Privacy Policy.</p>
 
   <h3>3.2 Subscription Plans (translation service)</h3>
-  <p>Standard and Premium subscriptions provide larger monthly allowances via our translation service. Subscriptions are subject to usage limits. Allowances are shown in the App. Payments are processed exclusively through Google Play Billing. Terms, including monthly pricing, auto-renewal, and cancellation, are governed by Google Play's subscription policies.</p>
+  <p>Light, Standard, Plus and Premium subscriptions provide larger monthly allowances via our translation service. Subscriptions are subject to usage limits. Allowances are shown in the App. Payments are processed exclusively through Google Play Billing. Terms, including monthly pricing, auto-renewal, and cancellation, are governed by Google Play's subscription policies.</p>
 
   <h3>3.3 BYOK (Bring Your Own Key)</h3>
-  <p>BYOK is included with paid subscriptions. You may configure your own API keys to send translation requests directly to your chosen AI provider without using our translation service. You are responsible for all API usage costs and compliance with that provider's terms.</p>
+  <p>BYOK is included with Standard, Plus and Premium subscriptions, not Light. You may configure your own API keys to send translation requests directly to your chosen AI provider without using our translation service. You are responsible for all API usage costs and compliance with that provider's terms.</p>
 
   <h3>3.4 Refunds</h3>
   <p>Refund requests are subject to Google Play's refund policy. We do not process refunds directly.</p>

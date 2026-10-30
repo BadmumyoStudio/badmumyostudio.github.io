@@ -11,7 +11,7 @@
   <a href="/" class="back">← Badmumyo Studio</a>
 
   <h1>Data Deletion — Novel Browser</h1>
-  <p style="color:var(--text-dim);font-size:13px;">Last updated: October 23, 2026</p>
+  <p style="color:var(--text-dim);font-size:13px;">Last updated: 2026-10-30</p>
 
   <h2>How to delete your data</h2>
 
@@ -21,7 +21,7 @@
   <ol>
     <li>Open <strong>Settings → Privacy &amp; Data</strong></li>
     <li>Select a time range (Last hour, 24 hours, 7 days, 4 weeks, or All time)</li>
-    <li>Check the data types to delete: Cookies &amp; Site Data, Browsing History, Translation Cache</li>
+    <li>Check the data types to delete: Cookies &amp; Site Data, Browsing History, Reading Log, Translation Cache</li>
     <li>Tap <strong>Clear Data</strong></li>
   </ol>
 
@@ -37,47 +37,43 @@
       <th style="text-align:left;padding:8px;">Retention</th>
     </tr>
     <tr style="border-bottom:1px solid var(--border);">
-      <td style="padding:8px;">Browsing history, bookmarks, cache, cookies, API keys, glossary</td>
+      <td style="padding:8px;">Browsing history, reading log, translation cache, cookies and site data</td>
       <td style="padding:8px;">Settings → Clear Data, or uninstall</td>
       <td style="padding:8px;">Until you delete</td>
     </tr>
     <tr style="border-bottom:1px solid var(--border);">
-      <td style="padding:8px;">Usage analytics events and Analytics ID (optional, only if you chose to send usage data)</td>
-      <td style="padding:8px;">Turn off sending in Settings → Privacy &amp; Data (deletes automatically), or email request (see below)</td>
-      <td style="padding:8px;">Submitted for deletion as soon as we receive it, aimed to finish within 30 days; an Analytics ID that has not been used for 11 months is deleted automatically with all of its events</td>
+      <td style="padding:8px;">Bookmarks, API keys and glossary</td>
+      <td style="padding:8px;">Delete in their respective screens, or uninstall; Clear Data does not remove them</td>
+      <td style="padding:8px;">Until you delete</td>
     </tr>
     <tr style="border-bottom:1px solid var(--border);">
-      <td style="padding:8px;">Hashed device ID and usage (proxy quota)</td>
+      <td style="padding:8px;">Installation credentials, subscription links and D1 request bindings</td>
       <td style="padding:8px;">Email request (see below)</td>
-      <td style="padding:8px;">Usage erased on request; see fraud-prevention row</td>
+      <td style="padding:8px;">Installations revoked; subscription links and D1 request bindings removed on request</td>
     </tr>
     <tr style="border-bottom:1px solid var(--border);">
-      <td style="padding:8px;">Hashed device ID + free-tier-used flag (fraud prevention)</td>
+      <td style="padding:8px;">Security revocation records, purchase ownership history, contract terms, reward deduplication and Durable Object quota/request records</td>
       <td style="padding:8px;">Retained after deletion request</td>
-      <td style="padding:8px;">Until no longer needed for abuse prevention (not personally identifiable)</td>
+      <td style="padding:8px;">Indefinitely; automatic deletion is not implemented</td>
     </tr>
   </table>
 
-  <h2>Delete usage analytics</h2>
-  <p>Usage analytics is off unless you turned it on. If you turned it on, you can delete everything that was sent without contacting us:</p>
-  <ol>
-    <li>Open <strong>Settings → Privacy &amp; Data</strong> in Novel Browser</li>
-    <li>Turn off <strong>Send usage data</strong></li>
-    <li>The app immediately sends one deletion request for every Analytics ID this device used. If the device is offline, it keeps the request and retries on the next launch or when the device is back online until it is accepted.</li>
-    <li>We submit the deletion as soon as the request reaches us and aim to finish within 30 days. PostHog processes deletions asynchronously, so they can take longer to complete, and we keep checking each request until it is done. If the device was offline, the request reaches us when it reconnects. An Analytics ID that has not been used for 11 months is deleted automatically together with all of its events.</li>
-  </ol>
-  <p>Settings → Privacy &amp; Data lists every Analytics ID this device has used, so you can identify which data your request covers. You can also email <a href="mailto:badmumyo@gmail.com?subject=Novel%20Browser%20Analytics%20Deletion%20Request">badmumyo@gmail.com</a> with subject <strong>Novel Browser Analytics Deletion Request</strong> and those Analytics IDs, and we will handle the deletion for you.</p>
-  <p>Usage analytics never contains page URLs, domain names, page titles, page text, translated text, text you type, your search queries, your reading log, or your advertising ID, so there is no such content to delete.</p>
-
   <h2>Request deletion of server-side data</h2>
   <ol>
-    <li>Open <strong>Settings → Privacy &amp; Data</strong> in Novel Browser</li>
-    <li>Copy your <strong>Deletion Request ID</strong> (8 characters)</li>
-    <li>Email <a href="mailto:badmumyo@gmail.com?subject=Novel%20Browser%20Data%20Deletion%20Request">badmumyo@gmail.com</a> with subject <strong>Novel Browser Data Deletion Request</strong></li>
-    <li>Include your Deletion Request ID in the message body</li>
+    <li>Open the <strong>Privacy Policy</strong> in Novel Browser and choose <strong>Contact by email</strong>.</li>
+    <li>Review the draft. It includes the full <code>deletion_request_id</code> (principal UUID) still stored on this device. Analytics IDs are optional and are not attached unless you select them.</li>
+    <li>Describe your request and send it to <a href="mailto:badmumyo@gmail.com?subject=Privacy%20Rights%20Request">badmumyo@gmail.com</a>, subject <strong>Privacy Rights Request</strong>. Opening a draft does not send or complete a request.</li>
+    <li>If no mail app is installed, copy the selectable address and draft. If you no longer have the app or IDs, email us with the service and approximate period concerned. Do not send passwords, session tokens, purchase tokens or identity documents unsolicited.</li>
   </ol>
-  <p>We process requests within 7 business days. Requests without a valid Deletion Request ID may not be processed.</p>
-  <p><strong>Important:</strong> After deletion, server-side usage records are erased, but free translation quota is <strong>not</strong> restored. Subscription and BYOK features continue to work as before.</p>
+  <p>We aim to acknowledge requests within 7 business days and respond within the period required by applicable law. We may request proportionate additional verification; an ID alone does not prove ownership. If we cannot locate records, we will explain the limitation rather than reject a request merely because an ID is missing. Users of older versions may provide their old deletion identifier; new UUIDs are never matched by a shortened prefix.</p>
+  <p>Deletion revokes the principal’s installations, advances their key generation, unlinks subscriptions and removes D1 request bindings. A revoked installation cannot renew its session or automatically register again. Existing sessions fail subsequent server authentication. Deletion does not cancel billing in Google Play; manage or cancel your store subscription separately. Subscription access on the revoked installation does not continue automatically.</p>
+  <p>D1 request IDs, principal associations and keyed body bindings are normally removed during cleanup at or after 30 days from creation. Separately, Durable Objects retain request IDs, keyed body bindings, attempts, charge records, outcome metadata and quota ledgers indefinitely. These records contain no translation text. They, security revocation records, purchase ownership history, contract terms and reward deduplication are retained after a deletion request to prevent balance resets. There is no base free translation grant, and deletion does not reset quota. Free-text feedback deletion is handled separately.</p>
+  <p>Scheduled cleanup runs every minute and daily at 03:17 UTC. Each cleanup pass removes at most 100 expired rows per table. Backlogs, delays or failures can leave eligible records stored longer; these retention periods do not guarantee a physical deletion deadline. After an expired administrative-operation receipt is physically deleted, its old operation ID and earlier cross-target conflicts can no longer be detected. Operators must not reuse old operation IDs.</p>
+
+  <p>D1 also stores settlement retry records, pre-dispatch safety records and recovery indexes, including principal/request/attempt identifiers, keyed body bindings and settlement metadata, without translation text. These recovery records are separate from the 30-day request bindings: they are removed when recovery or terminal-state confirmation succeeds, but storage failures or unresolved requests can retain them indefinitely. Deletion requests do not immediately remove records still needed to prevent duplicate charging; no fixed maximum retention is currently implemented. Deletion revokes future authentication, but requests already accepted may finish processing and settlement. Include every deletion_request_id stored on this device and attached by Contact by email in the Privacy Policy when requesting deletion; the recovery-retention exceptions in Section 2.1 also apply to Section 9.</p>
+
+  <h2>Usage analytics</h2>
+  <p>Analytics IDs are separate from the translation principal. Turning off usage analytics stops sending immediately and queues deletion requests for every Analytics ID used by the device. Offline requests retry when the app can connect. You may optionally attach the Analytics IDs still on this device using the Privacy Policy contact; doing so links those IDs in your email. You review and send the message yourself. Analytics deletion remains automatic and does not require this additional email.</p>
 
   <h2>Other questions</h2>
   <p>For other privacy questions: <a href="mailto:badmumyo@gmail.com">badmumyo@gmail.com</a></p>

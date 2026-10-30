@@ -1,67 +1,170 @@
-<!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Privacy Policy — Novel Browser | Badmumyo Studio</title><link rel="stylesheet" href="style.css"></head><body>
-<div class="privacy">
-  <a href="/" class="back">← Badmumyo Studio</a>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Novel Browser Privacy Policy</title>
+<style>body{font:16px/1.65 sans-serif;max-width:800px;margin:32px auto;padding:0 20px;overflow-wrap:anywhere}h1,h2,h3{line-height:1.3}</style>
+</head>
+<body>
+<main>
 <h1>Privacy Policy — Novel Browser</h1>
+
 <p>Last updated: 2026-10-30</p>
+
+<hr>
+
 <h2>1. Overview</h2>
+
 <p>Novel Browser (&quot;the App&quot;) is a web browser with AI-powered translation capabilities. This Privacy Policy explains how your data is handled when you use the App.</p>
+
 <h2>2. Data We Collect</h2>
-<p>The App processes data only as described in this Policy. Translation text may pass through our translation service and an AI provider as described in Section 3. Hashed device identifiers and quota or rewarded-ad usage records are handled as described below.</p>
-<h3>2.1 Device Identifier (Translation Usage Limits)</h3>
-<p>When you use translation through our translation service (free or subscription), the App collects your device&#x27;s Android ID, hashed with SHA-256 before transmission. The original value is never stored or sent. We store the hashed identifier and the amount of translation usage associated with your device on our translation service servers until you request deletion (Section 9). The base free allowance is not reset on a daily schedule. Rewarded-ad allowance is tracked separately from the base free allowance and may include a limited carryover period.</p>
-<p><strong>Purpose:</strong> To provide fair-use translation limits without requiring user account creation.</p>
+
+<p><strong>Developer contact:</strong> Badmumyo Studio — badmumyo@gmail.com.</p>
+
+<p><strong>The App processes data only as described in this Policy. Translation text may pass through our translation service and an AI provider as described in Section 3. Anonymous principal identifiers and quota or rewarded-ad usage records are handled as described below.</strong></p>
+
+<h3>2.1 Anonymous translation identity</h3>
+
+<p>No account registration is required. The App creates a random installation UUID and a non-exportable P-256 key in Android Keystore. The server issues an anonymous principal UUID after verifying the signature and Play Integrity. Android ID is not used for translation authentication. Session tokens are kept only in memory. Installation metadata is excluded from backup; a missing or invalid key creates a new installation identity.</p>
+
+<p>There is no base free grant (zero tokens). Without a subscription, translation uses only server-confirmed rewarded-ad buckets. Each reward adds 30,000 tokens, up to seven per day. Yesterday’s and today’s buckets are separate; a request must fit one bucket.</p>
+
+<p>To prevent duplicate charging, D1 keeps the request ID, principal association and server-keyed body binding until cleanup at or after 30 days from creation. Separately, Durable Objects retain request IDs, keyed body bindings, attempt and charge records, outcome metadata and quota ledgers indefinitely; automatic deletion is not implemented. Translation text is not stored in these records. For deletion, email badmumyo@gmail.com with the full deletion_request_id (principal UUID) attached by Contact by email in the Privacy Policy. Deletion revokes installations, unlinks subscriptions and removes D1 request bindings. Security revocation records, purchase ownership history, contract terms, reward deduplication and Durable Object records remain to prevent balance resets. A revoked installation does not automatically register again, and deletion does not cancel your store subscription. Free-text feedback deletion is handled separately.</p>
+
+<p><strong>IP-derived abuse controls.</strong> Our translation server processes the connection IP as IPv4 /32 or an IPv6 prefix (/64 for session challenges, /48 for Integrity registration). It stores a server-keyed HMAC and rate counters, not the raw IP, in these rate-limit records. Challenge counters expire after one minute and are deleted by a Durable Object alarm. D1 minute/day counters expire at their window boundary (daily: midnight UTC). Physical deletion runs on subsequent rate-limit requests or periodic cleanup (every minute and at 03:17 UTC), with at most 100 expired records per table per cleanup pass. Backlogs, delays or failures can extend retention; no fixed physical-deletion deadline is guaranteed. These rate-limit records contain no direct principal association; HMAC values are pseudonymous, not guaranteed anonymous.</p>
+
+<p>D1 also stores settlement retry records, pre-dispatch safety records and recovery indexes, including principal/request/attempt identifiers, keyed body bindings and settlement metadata, without translation text. These recovery records are separate from the 30-day request bindings: they are removed when recovery or terminal-state confirmation succeeds, but storage failures or unresolved requests can retain them indefinitely. Deletion requests do not immediately remove records still needed to prevent duplicate charging; no fixed maximum retention is currently implemented. Deletion revokes future authentication, but requests already accepted may finish processing and settlement. Include every deletion_request_id stored on this device and attached by Contact by email in the Privacy Policy when requesting deletion; the recovery-retention exceptions in Section 2.1 also apply to Section 9.</p>
+
+<p>Operator-processed revocations store a minimal D1 operation receipt: a random operation ID, the principal UUID, creation time and expiry. It supports retries and short-term verification for 30 days. Periodic cleanup removes at most 100 expired receipts per pass, subject to backlogs, delays or failures. After physical deletion, old operation IDs and past cross-principal conflicts cannot be detected; old IDs must not be reused. The receipt contains no request message, email, purchase token or private key and does not indicate complete erasure of retained records.</p>
 <h3>2.2 Rewarded Advertising (Optional)</h3>
-<p>If you choose to watch rewarded ads, Google AdMob may collect your Advertising ID (AAID) and related data for ad delivery. Completing a rewarded ad may increase your translation allowance through our translation service. We store ad view counts and rewarded-ad allowance usage associated with the hashed device identifier to apply and enforce that allowance.</p>
-<p>Google User Messaging Platform (UMP) obtains, stores and communicates your advertising privacy choices. Opening the advertising privacy settings can contact Google even if you do not watch an ad. Where required, you can refuse consent or change or withdraw it in Settings → Privacy &amp; Data → Advertising privacy. Advertising consent is separate from optional usage analytics.</p>
+
+<p>When you use advertising features, the Google Mobile Ads SDK processes data as described in Section 7. Completing a rewarded ad may increase your translation allowance. We store reward counts and allowance usage against the principal UUID to enforce that allowance.</p>
+
+<p>Opening Privacy & Data also requests updated advertising consent information through Google UMP, even without watching an ad. This consent-management request is separate from optional usage analytics.</p>
+
 <h3>2.3 Usage Analytics (Optional)</h3>
-<p><strong>You choose whether this is sent. Nothing is sent unless you select the optional &quot;I agree to send usage data.&quot; checkbox during initial setup or turn on the switch in Settings → Privacy &amp; Data.</strong> The checkbox is unchecked by default. Leaving it unchecked does not change the App&#x27;s features. Your choice, its time and the Policy version are stored on your device.</p>
+
+<p><strong>You choose whether this is sent. Nothing is sent unless you select the optional &quot;I agree to send usage data.&quot; checkbox during initial setup or turn on the switch in Settings → Privacy &amp; Data.</strong> The checkbox is unchecked by default. Leaving it unchecked does not change the App's features. Your choice, its time and the Policy version are stored on your device.</p>
+
 <p>When it is on, the App sends the following to PostHog in the EU region (<code>https://eu.i.posthog.com</code>), under a random analytics ID that is not derived from your name, account, Android ID or advertising ID:</p>
-<ul><li><strong>Events:</strong> consent granted (Policy version) and consent withdrawn (one deletion request per ID); app launch (whether it is the first launch, and how the app was opened: cold start, warm start, or right after choosing to send), onboarding completion (number of steps, onboarding mode), how a URL was entered (address bar, bookmark, history, opened from another app, or shared to the App), page load success (load time, restored or not), page failure (reason category, SSL or not), reader opened (paragraph-count bucket, extraction time) or failed (reason category), translation started (target language), translation completed (duration, character-count bucket, number of chunks as a whole number, outcome) or failed (reason category), quota exhaustion (kind, plan), rewarded-ad grant (placement), and the purchase screen appearing (product, what triggered it).</li><li><strong>Numbers:</strong> timings in milliseconds (page load, reader extraction, translation, launch); session length in seconds; URL length, paragraph count and character count as coarse buckets; and per-session counts of chapters read and translations completed.</li><li><strong>App information:</strong> app version, build number and Android major version.</li></ul>
+
+<ul>
+<li><strong>Events:</strong> consent granted (Policy version) and consent withdrawn (one deletion request per ID); app launch (whether it is the first launch, and how the app was opened: cold start, warm start, or right after choosing to send), onboarding completion (number of steps, onboarding mode), how a URL was entered (address bar, bookmark, history, opened from another app, or shared to the App), page load success (load time, restored or not), page failure (reason category, SSL or not), reader opened (paragraph-count bucket, extraction time) or failed (reason category), translation started (target language), translation completed (duration, character-count bucket, number of chunks as a whole number, outcome) or failed (reason category), quota exhaustion (kind, plan), rewarded-ad grant (placement), and the purchase screen appearing (product, what triggered it).</li>
+<li><strong>Numbers:</strong> timings in milliseconds (page load, reader extraction, translation, launch); session length in seconds; URL length, paragraph count and character count as coarse buckets; and per-session counts of chapters read and translations completed.</li>
+<li><strong>App information:</strong> app version, build number and Android major version.</li>
+</ul>
+
 <p>We never send, for usage analytics: page URLs, domain names, page titles, page text, translated text, text you type, your search queries, your reading log, or your advertising ID.</p>
+
 <p><strong>Processor and location.</strong> PostHog, Inc. (service name PostHog) processes this data on our behalf, under our instructions. The data is stored on servers in the European Union (https://posthog.com/privacy). PostHog, Inc. is a US company. PostHog keeps each analytics ID as a person record so that the events can be grouped and deleted together with it. That record holds the random analytics ID and the event properties listed above — no name, email address, account, Android ID or advertising ID. We do not sell or share this data.</p>
+
 <p><strong>IP address.</strong> Our PostHog project is configured to discard client IP addresses, and the App also sends the IP field as <code>0.0.0.0</code> with IP-based geolocation disabled. As a result, the events we store do not contain your IP address.</p>
+
 <p><strong>Legal basis (EEA, UK, Switzerland):</strong> your consent (GDPR Article 6(1)(a)). You can withdraw it at any time.</p>
+
 <p><strong>Retention:</strong> we delete an analytics ID together with all of its events once it has not been used for 11 months. A daily job collects the IDs that have asked for deletion and the IDs that have been inactive that long, and deletes them in PostHog; these events are not copied anywhere else. If an analytics ID keeps being used, its older events can stay in PostHog for longer than a year.</p>
-<p><strong>Turning it off:</strong> you can turn it off at any time in Settings → Privacy &amp; Data. Sending stops immediately. When you turn it off, the App sends one deletion request for each Analytics ID this device used — outside the normal analytics path, containing only that analytics ID, the time it is sent, and a random id used to avoid duplicates — so that we can delete what was already sent. If it cannot be sent (for example while offline) the App keeps it and retries on the next launch or when the device is back online until it is accepted. Settings → Privacy &amp; Data keeps showing every Analytics ID this device has used. We submit the deletion as soon as the request reaches us and aim to finish within 30 days, without waiting for you to ask; if your device was offline, the request reaches us when it reconnects. PostHog processes deletions asynchronously, so they can take longer to complete, and we keep checking each request until it is done.</p>
+
+<p><strong>Turning it off:</strong> you can turn it off at any time in Settings → Privacy &amp; Data. Sending stops immediately. When you turn it off, the App sends one deletion request for each Analytics ID this device used — outside the normal analytics path, containing only that analytics ID, the time it is sent, and a random id used to avoid duplicates — so that we can delete what was already sent. If it cannot be sent (for example while offline) the App keeps it and retries on the next launch or when the device is back online until it is accepted. Analytics ID history stays on this device for automatic deletion retries; it is not listed in Settings. We submit the deletion as soon as the request reaches us and aim to finish within 30 days, without waiting for you to ask; if your device was offline, the request reaches us when it reconnects. PostHog processes deletions asynchronously, so they can take longer to complete, and we keep checking each request until it is done.</p>
+
 <p><strong>Purpose:</strong> to see where the App fails and which features are not used, so we can improve them.</p>
+
 <p><strong>How we can show your consent:</strong> an analytics ID is generated only after you opt in to sending usage data, and the App then sends one <code>consent_granted</code> event with the version of this Policy. Together with the record kept on your device, this shows which version you agreed to and when. The device record is never sent.</p>
+
+<h3>2.4 Feedback</h3>
+<p>When you submit feedback, we send and store your rating, category and message, an optional reply email, and app information only if you choose to attach it: app version/build, Android version, device model/manufacturer, language, time zone. This supports replies and troubleshooting. It is separate from optional usage analytics. Do not include passwords or API keys. Contact us to request deletion of feedback. We also store a server-keyed HMAC of the connection IP and the request User-Agent for abuse prevention.</p>
 <h2>3. Data Sent to Third-Party AI Providers</h2>
+
 <p>When you use translation, text visible on the current page and selected for translation is sent off your device for processing. The App cannot determine whether that text contains personal or sensitive information. Depending on your plan:</p>
-<ul><li><strong>Free Tier &amp; Subscription Plan (translation service):</strong> Your text is routed through our translation service and processed by contracted cloud infrastructure and AI processing providers solely to provide translation.</li><li><strong>BYOK (Bring Your Own Key):</strong> Available with a paid subscription. Your text is sent directly to the AI provider you configure (OpenAI, Anthropic, Google Gemini, OpenRouter, or a custom endpoint) without using our translation service.</li></ul>
-<p>Our translation service does not store translation text. The currently contracted AI processing service states that it does not store inputs or outputs and does not use customer data to train, retrain, or fine-tune hosted models.</p>
+
+<ul>
+<li><strong>Free Tier &amp; Subscription Plan (translation service):</strong> Your text is routed through our translation service and processed by contracted cloud infrastructure and AI processing providers solely to provide translation.</li>
+<li><strong>BYOK (Bring Your Own Key):</strong> Available with Standard, Plus or Premium (not Light). Your text is sent directly to the AI provider you configure (OpenAI, Anthropic, Google Gemini, OpenRouter, or a custom endpoint) without using our translation service.</li>
+</ul>
+
+<p>Our translation service does not store translation text. Retention and use of data by the AI provider processing the request are governed by that provider's policies and the applicable contract terms.</p>
+
 <p>Text is sent only when you activate translation or a translation setting you enabled triggers it. Do not translate pages containing sensitive information unless you agree to this processing.</p>
-<p>For BYOK, processing and retention are also governed by the policy of the provider you configure:
-- OpenAI: https://openai.com/policies/privacy-policy
-- Anthropic: https://www.anthropic.com/legal/privacy
-- Google Gemini: https://policies.google.com/privacy
-- OpenRouter: https://openrouter.ai/privacy</p>
+
+<p>For BYOK, processing and retention are also governed by the policy of the provider you configure:</p>
+<ul>
+<li>OpenAI: https://openai.com/policies/privacy-policy</li>
+<li>Anthropic: https://www.anthropic.com/legal/privacy</li>
+<li>Google Gemini: https://policies.google.com/privacy</li>
+<li>OpenRouter: https://openrouter.ai/privacy</li>
+</ul>
+
 <h2>4. Data Stored on Your Device</h2>
+
 <p>The following data is stored locally on your device and is not transmitted to us as personal data:</p>
-<ul><li><strong>API Keys:</strong> Stored encrypted using Android Keystore (AES-256-GCM).</li><li><strong>Translation Cache:</strong> Previously translated text is cached locally to reduce API costs on repeat visits. You can clear this cache at any time in Settings.</li><li><strong>Glossary Terms:</strong> User-managed term translations stored in a local database.</li><li><strong>Browsing History &amp; Bookmarks:</strong> Stored locally. You can delete them at any time.</li><li><strong>Reading Log:</strong> Page URL, title, domain, reading time, and session timestamps are stored locally for Reader statistics. Page text, translated text, and full page contents are not saved. You can delete the reading log at any time in Settings.</li><li><strong>Domain Preferences:</strong> Per-site translation and glossary settings.</li><li><strong>Subscription Status:</strong> Your Play Billing entitlement status is stored locally.</li></ul>
+
+<ul>
+<li><strong>API Keys:</strong> Stored encrypted using Android Keystore (AES-256-GCM).</li>
+<li><strong>Translation Cache:</strong> Previously translated text is cached locally to reduce API costs on repeat visits. You can clear this cache at any time in Settings.</li>
+<li><strong>Glossary Terms:</strong> User-managed term translations stored in a local database.</li>
+<li><strong>Browsing History &amp; Bookmarks:</strong> Stored locally. You can delete them at any time.</li>
+<li><strong>Reading Log:</strong> Page URL, title, domain, reading time, and session timestamps are stored locally for Reader statistics. Page text, translated text, and full page contents are not saved. You can delete the reading log at any time in Settings.</li>
+<li><strong>Domain Preferences:</strong> Per-site translation and glossary settings.</li>
+<li><strong>Subscription Status:</strong> Your Play Billing entitlement status is stored locally.</li>
+</ul>
+
 <h2>5. Cookies and Site Data</h2>
-<p>The App uses GeckoView (Mozilla&#x27;s browser engine) to render web pages. Websites you visit may set cookies and store site data as they would in any browser. You can clear cookies and site data at any time in Settings.</p>
+
+<p>The App uses GeckoView (Mozilla's browser engine) to render web pages. Websites you visit may set cookies and store site data as they would in any browser. You can clear cookies and site data at any time in Settings.</p>
+
 <h2>6. Third-Party Services</h2>
+
 <p>The App may use third-party components for browsing, advertising, payments, optional crash reporting, usage analytics, and translation routing. Each provider handles data under its own policies. Usage analytics is processed by <strong>PostHog, Inc.</strong> (service name PostHog, EU region, https://posthog.com/privacy) as our processor, on our instructions, for the purposes in Section 2.3; for that purpose we never send page content, URLs, or anything you type.</p>
+
 <h2>7. Data Sharing</h2>
-<p>We do not sell or rent your data. Data that leaves your device includes:</p>
-<ul><li>The hashed device identifier and usage data for quota management (Section 2.1).</li><li>The text you explicitly choose to translate, sent via our translation service or directly to the AI provider you configure.</li><li>Advertising SDK data described below.</li><li>Action events when you enable usage analytics (Section 2.3). Our analytics processor acts on our behalf, so this is not sharing.</li></ul>
-<p>Advertising SDK data handling is separate from optional usage analytics. When advertising features are used, the Google Mobile Ads SDK collects and shares IP addresses (which may be used to estimate general location), app and ad interactions, diagnostic data and device identifiers with Google and advertising partners for advertising, analytics and fraud prevention. Available identifiers and processing depend on consent, device settings and ad mode. The consent message identifies the relevant advertising partners and purposes; where available, you can change or withdraw consent through the advertising privacy settings in Section 2.2. See <a href="https://developers.google.com/admob/android/privacy/play-data-disclosure">Google's Mobile Ads SDK data disclosure</a> and <a href="https://policies.google.com/privacy">privacy policy</a>.</p>
-<h2>8. Children&#x27;s Privacy</h2>
+
+<p>Advertising SDK data sharing is described below and is separate from optional usage analytics. Data sent off-device includes:</p>
+
+<ul>
+<li>The anonymous principal UUID and usage data for quota management (Section 2.1).</li>
+<li>The text you explicitly choose to translate, sent via our translation service or directly to the AI provider you configure.</li>
+<li>When advertising features are used, the Google Mobile Ads SDK collects and shares IP addresses (which may be used to estimate general location), app and ad interactions, diagnostic information and device identifiers for advertising, analytics and fraud prevention. Identifier availability depends on consent, device settings and ad mode. See https://developers.google.com/admob/android/privacy/play-data-disclosure. These SDK disclosures must be assessed separately from PostHog’s service-provider processing; disabling our usage analytics does not disable advertising SDK processing.</li>
+<li>Action events when you enable usage analytics (Section 2.3). Our analytics processor acts on our behalf, so this is not sharing.</li>
+</ul>
+
+<h2>8. Children's Privacy</h2>
+
 <p>The App is not directed at children under 13. We do not knowingly collect data from children.</p>
+
 <h2>9. Your Rights</h2>
-<p>Since most data is stored locally on your device, you can delete it at any time by:</p>
-<ul><li>Clearing browsing data in Settings → Privacy &amp; Data</li><li>Clearing translation cache in Settings</li><li>Uninstalling the App (removes all local data)</li></ul>
-<p><strong>Server-side quota data</strong> includes hashed device identifiers, translation service usage records, ad view counts, and rewarded-ad allowance usage. It is retained until you request deletion. Email badmumyo@gmail.com (subject: Data Deletion Request) with your <strong>Deletion Request ID</strong> from Settings → Privacy &amp; Data, or see https://badmumyostudio.github.io/data-deletion.html</p>
-<p>Upon deletion, we erase server-side usage records. To prevent abuse, we retain a hashed device identifier and a flag indicating that the free tier was previously used. This data cannot identify you personally and is kept only for fraud prevention. Free translation quota is not restored after deletion.</p>
-<p><strong>Usage analytics</strong> stops sending as soon as you turn it off. Use of the sending ID ends; all IDs remain on your device as history for deletion requests. The App automatically sends one deletion request per ID through a separate path and retries on the next launch or when back online until accepted. We submit the deletion as soon as the request reaches us and aim to finish within 30 days, without waiting for you to ask, and keep checking it until it is done; if your device was offline, the request reaches us when it reconnects. You can also email badmumyo@gmail.com (subject: Analytics Deletion Request) with all Analytics IDs from Settings → Privacy &amp; Data. EEA, UK and Swiss residents may request a copy of the data in Section 2.3 and complain to their local supervisory authority.</p>
+
+<p>Subject to applicable law and the conditions for each right, EEA, UK and Swiss residents may request access and a copy, correction, erasure, restriction of processing, data portability in a structured, commonly used, machine-readable format, and object to processing where applicable. You may withdraw consent without affecting the lawfulness of earlier processing, and complain to your local supervisory authority. Email <a href="mailto:badmumyo@gmail.com?subject=Privacy%20Rights%20Request">badmumyo@gmail.com</a> (subject: Privacy Rights Request), including relevant Analytics IDs or the full deletion_request_id attached by Contact by email in the Privacy Policy to locate records. You can also delete local browsing data and translation caches in Settings, or remove local data by uninstalling the App.</p>
+
+<p><strong>International access and transfers.</strong> EU storage does not by itself restrict access or processing to the EU. PostHog, Inc. is a US company. For information about international access, transfers and applicable safeguards, contact badmumyo@gmail.com. This does not change the retention and anti-reset exceptions described below.</p>
+
+<p>To prevent duplicate charging, D1 keeps the request ID, principal association and server-keyed body binding until cleanup at or after 30 days from creation. Separately, Durable Objects retain request IDs, keyed body bindings, attempt and charge records, outcome metadata and quota ledgers indefinitely; automatic deletion is not implemented. Translation text is not stored in these records. For deletion, email badmumyo@gmail.com with the full deletion_request_id (principal UUID) attached by Contact by email in the Privacy Policy. Deletion revokes installations, unlinks subscriptions and removes D1 request bindings. Security revocation records, purchase ownership history, contract terms, reward deduplication and Durable Object records remain to prevent balance resets. A revoked installation does not automatically register again, and deletion does not cancel your store subscription. Free-text feedback deletion is handled separately.</p>
+
+<p><strong>Usage analytics</strong> stops sending as soon as you turn it off. Use of the sending ID ends; all IDs remain on your device as history for deletion requests. The App automatically sends one deletion request per ID through a separate path and retries on the next launch or when back online until accepted. We submit the deletion as soon as the request reaches us and aim to finish within 30 days, without waiting for you to ask, and keep checking it until it is done; if your device was offline, the request reaches us when it reconnects. You can also email badmumyo@gmail.com (subject: Analytics Deletion Request) with the Analytics IDs optionally attached through the Privacy Policy contact. EEA, UK and Swiss residents may request a copy of the data in Section 2.3 and complain to their local supervisory authority.</p>
+
 <h2>10. Changes to This Policy</h2>
+
 <p>We may update this Privacy Policy from time to time. Changes will be reflected in the App and on our website.</p>
+
 <h2>11. Contact</h2>
+<p>Contact by email in the app’s Privacy Policy screen prepares a draft with service IDs still stored on this device. Analytics IDs are added only if you select the optional checkbox; doing so links those IDs in your email. You review and send the message yourself. If no mail app is available, copy the selectable address and draft. You may also email badmumyo@gmail.com without IDs, including after uninstalling; tell us which service and approximate period your request concerns. We may need proportionate additional verification and may be unable to locate some records. An ID alone is not proof of ownership.</p>
+
 <p>For questions about this Privacy Policy, please contact us at: badmumyo@gmail.com</p>
+
 <h2>12. Google Play Data Safety Disclosure</h2>
-<p>For the Google Play Data Safety section, we declare the following:</p>
-<ul><li><strong>Translation text:</strong> Sent off-device only when translation is used, for app functionality. It is processed for the real-time request and may contain personal or sensitive information from the page.</li><li><strong>Web browsing history and reading activity:</strong> stored on device only, not transmitted. With usage analytics on, only per-session counts (chapters read, translations completed) are sent — never URLs or titles.</li><li><strong>Crash logs and diagnostics:</strong> crash reports go to Sentry only when a Sentry DSN is configured in the build, which it is not in the build we publish. Performance timings (load, extraction, translation, launch, session length) are sent with usage analytics and declared as Diagnostics.</li><li><strong>Device or other IDs:</strong> a SHA-256 hashed Android ID is used for translation usage limits and is required for that feature; the analytics ID is random and only sent with your consent.</li><li><strong>Usage data (optional):</strong> the events and numbers in Section 2.3 with a pseudonymous analytics ID, sent to PostHog, Inc. (EU region) only after you opt in to sending usage data. No URLs, domain names, page titles, page text or typed input. Processed on our behalf as a service provider, not shared. Declared as App activity (App interactions), App info and performance (Diagnostics) and Device or other IDs; collected, not shared, optional, for Analytics, and not processed ephemerally.</li></ul>
-</div>
+
+<p>When advertising features are used, the Google Mobile Ads SDK collects and shares IP addresses (which may be used to estimate general location), app and ad interactions, diagnostic information and device identifiers for advertising, analytics and fraud prevention. Identifier availability depends on consent, device settings and ad mode. See https://developers.google.com/admob/android/privacy/play-data-disclosure. These SDK disclosures must be assessed separately from PostHog’s service-provider processing; disabling our usage analytics does not disable advertising SDK processing.</p>
+
+<p><strong>Sentry-specific disclosure:</strong> the Sentry DSN statement above concerns only Sentry, not other SDKs. Advertising SDK diagnostics and device identifiers (including advertising ID and app set ID where available) are separate from our optional analytics. The provider describes app launches, taps and video views as interactions; these are not limited to ad taps.</p>
+
+<p>The data handling described in this policy includes:</p>
+
+<ul>
+<li><strong>Translation text:</strong> Sent off-device only when translation is used, for app functionality. It is processed for the real-time request and may contain personal or sensitive information from the page.</li>
+<li><strong>Web browsing history and reading activity:</strong> stored on device only, not transmitted. With usage analytics on, only per-session counts (chapters read, translations completed) are sent — never URLs or titles.</li>
+<li><strong>Crash logs and diagnostics:</strong> crash reports go to Sentry only when a Sentry DSN is configured in the build, which it is not in the build we publish. Performance timings (load, extraction, translation, launch, session length) are sent with usage analytics and declared as Diagnostics.</li>
+<li><strong>Device or other IDs:</strong> random installation/principal UUIDs and a public signing key are required for translation authentication and quota. The analytics ID is separate, random and only sent with consent.</li>
+<li><strong>Usage data (optional):</strong> the events and numbers in Section 2.3 with a pseudonymous analytics ID, sent to PostHog, Inc. (EU region) only after you opt in to sending usage data. No URLs, domain names, page titles, page text or typed input. Processed on our behalf as a service provider, not shared. Declared as App activity (App interactions), App info and performance (Diagnostics) and Device or other IDs; collected, not shared, optional, for Analytics, and not processed ephemerally.</li>
+</ul>
+</main>
 </body>
 </html>
