@@ -10,7 +10,7 @@
 <main>
 <h1>Privacy Policy — Novel Browser</h1>
 
-<p>Last updated: 2026-10-30</p>
+<p>Last updated: 2026-11-19</p>
 
 <hr>
 
@@ -28,7 +28,7 @@
 
 <p>No account registration is required. The App creates a random installation UUID and a non-exportable P-256 key in Android Keystore. The server issues an anonymous principal UUID after verifying the signature and Play Integrity. Android ID is not used for translation authentication. Session tokens are kept only in memory. Installation metadata is excluded from backup; a missing or invalid key creates a new installation identity.</p>
 
-<p>There is no base free grant (zero tokens). Without a subscription, translation uses only server-confirmed rewarded-ad buckets. Each reward adds 30,000 tokens, up to seven per day. Yesterday’s and today’s buckets are separate; a request must fit one bucket.</p>
+<p>The initial free allowance is 100,000 tokens per anonymous principal. It does not reset daily or monthly. Each server-confirmed rewarded ad adds 30,000 tokens, up to seven per day. Yesterday’s ad allowance is used before today’s, then the initial free allowance. Each translation request must fit within one of these separately managed allowances.</p>
 
 <p>To prevent duplicate charging, D1 keeps the request ID, principal association and server-keyed body binding until cleanup at or after 30 days from creation. Separately, Durable Objects retain request IDs, keyed body bindings, attempt and charge records, outcome metadata and quota ledgers indefinitely; automatic deletion is not implemented. Translation text is not stored in these records. For deletion, email badmumyo@gmail.com with the full deletion_request_id (principal UUID) attached by Contact by email in the Privacy Policy. Deletion revokes installations, unlinks subscriptions and removes D1 request bindings. Security revocation records, purchase ownership history, contract terms, reward deduplication and Durable Object records remain to prevent balance resets. A revoked installation does not automatically register again, and deletion does not cancel your store subscription. Free-text feedback deletion is handled separately.</p>
 
@@ -72,7 +72,7 @@
 <p><strong>How we can show your consent:</strong> an analytics ID is generated only after you opt in to sending usage data, and the App then sends one <code>consent_granted</code> event with the version of this Policy. Together with the record kept on your device, this shows which version you agreed to and when. The device record is never sent.</p>
 
 <h3>2.4 Feedback</h3>
-<p>When you submit feedback, we send and store your rating, category and message, an optional reply email, and app information only if you choose to attach it: app version/build, Android version, device model/manufacturer, language, time zone. This supports replies and troubleshooting. It is separate from optional usage analytics. Do not include passwords or API keys. Contact us to request deletion of feedback. We also store a server-keyed HMAC of the connection IP and the request User-Agent for abuse prevention.</p>
+<p>When you submit feedback, we send and store your rating, category and message, an optional reply email, and app information: app version/build, Android version, device model/manufacturer, language, time zone. Current versions of the app always attach this app information. This supports replies and troubleshooting. It is separate from optional usage analytics. Do not include passwords or API keys. Contact us to request deletion of feedback. We also store a server-keyed HMAC of the connection IP and the request User-Agent for abuse prevention. Each feedback is stored with your anonymous user ID (principal UUID) so that the thank-you can be matched and abuse prevented. As thanks for feedback, we may add translation allowance or give a Standard plan gift. Free and Light users receive the gift as a Google Play free trial; Standard and higher subscribers receive it as a Google Play deferral of the next billing date. The free trial requires a payment method and renews automatically when it ends unless canceled. To prevent abuse and quota resets and to match the gift to the purchase, we keep a record of each grant with your anonymous user ID, the time, the server-keyed HMAC of the connection IP, the pseudonymous billing ID, the contract ID, the purchase token and the billing dates before and after the deferral.</p>
 <h2>3. Data Sent to Third-Party AI Providers</h2>
 
 <p>When you use translation, text visible on the current page and selected for translation is sent off your device for processing. The App cannot determine whether that text contains personal or sensitive information. Depending on your plan:</p>
